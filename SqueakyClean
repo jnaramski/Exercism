@@ -16,7 +16,7 @@ public class SqueakyClean {
             } else if (c == '-') {
                 upperNext = true;
 
-            // Replace digits with corresponding letters
+            // Replace digits with letters
             } else if (Character.isDigit(c)) {
                 switch (c) {
                     case '4' -> result.append('a');
@@ -31,7 +31,7 @@ public class SqueakyClean {
             } else if (!Character.isLetter(c)) {
                 continue;
 
-            // If the flag is set, uppercase the character
+            // If the flag is true, uppercase the character
             } else if (upperNext) {
                 result.append(Character.toUpperCase(c));
                 upperNext = false;
