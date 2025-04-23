@@ -1,0 +1,51 @@
+class SqueakyClean {
+    // Method to clean the identifier
+    static String clean(String identifier) {
+
+        // StringBuilder to build the result
+        StringBuilder result = new StringBuilder();
+
+        // Flag to uppercase the next letter after a dash
+        boolean upperNext = false; 
+
+        // Loop through each character
+        for (char c : identifier.toCharArray()){
+            
+            // Replace spaces with underscores
+            if (c == ' '){
+                result.append('_'); 
+            
+            // Set flag to uppercase next letter after dash
+            } else if (c == '-') {
+                upperNext = true;                
+            
+            // Uppercase next letter and reset flag
+            } else if (upperNext){
+                result.append(Character.toUpperCase(c));
+                upperNext = false;
+            
+            // Replace digits with letters
+            } else if (Character.isDigit(c)){
+                switch (c) {
+                    case '4' -> result.append('a');
+                    case '3' -> result.append('e');
+                    case '0' -> result.append('o');
+                    case '1' -> result.append('l');
+                    case '7' -> result.append('t');
+                    default  -> result.append(c);
+                }
+            
+            // Skip non-letters
+            } else if (!Character.isLetter(c)) {
+                continue;  
+            
+            // Append letters as they are
+            } else {
+                result.append(c); 
+            }
+        }
+
+        // Return the result as a string
+        return result.toString(); 
+    }
+}
